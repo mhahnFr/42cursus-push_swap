@@ -16,7 +16,13 @@ struct s_stack {
  * Allocates a new element. Returns either the newly allocated element or null
  * if the allocation failed.
  */
-struct s_stack	stack_new(int content);
+struct s_stack	*stack_new(int content);
+
+/*
+ * Appends the given element to the given stack list. Does nothing if no
+ * element to add is given.
+ */
+void			stack_append(struct s_stack **this, struct s_stack *appendix);
 
 /*
  * Deletes the given stack. Does nothing if no stack is given.

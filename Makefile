@@ -10,12 +10,26 @@ CFLAGS = -Wall -Werror -Wextra -g #-Ofast
 # The name of the executable.
 NAME = push_swap
 
+# The path to the libft.
+LFT_D = ./libft/src
+
+# The name of the libft.
+LFT_A = libft.a
+
+# The full path to the libft.
+LFT_P = $(LFT_D)/$(LFT_A)
+
+# The includes.
+INCL = -I. -I$(LFT_D)
+
+# The flags for the linker.
+LDFLAGS = -L$(LFT_D) -lft
 
 # Makes everything.
 all: $(NAME)
 
 # Makes everything that is needed for the executable.
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LFT_P)
 	$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 
 # Runs the norm checker on all registered files.
@@ -25,9 +39,13 @@ nor:
 # Convenience rule for a bonus work which should already be included.
 bonus: all
 
+# Calls the makefile of the libft.
+$(LFT_P):
+	make -C $(LFT_D) $(LFT_A)
+
 # Compiles each file individually.
 %.o: %.c
-	$(CC) $(CFLAGS) -I. -c -o $@ $<
+	$(CC) $(CFLAGS) $(INCL) -c -o $@ $<
 
 # Removes all temporary files.
 clean:
