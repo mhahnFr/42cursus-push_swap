@@ -1,5 +1,5 @@
 # All source files.
-SRC = main.c
+SRC = ./main.c ./input/input_check.c ./input/input_parse.c ./sort/sort.c
 
 # The object files.
 OBJ = $(patsubst %.c,%.o,$(SRC))
@@ -27,7 +27,7 @@ bonus: all
 
 # Compiles each file individually.
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -I. -c -o $@ $<
 
 # Removes all temporary files.
 clean:
@@ -42,4 +42,5 @@ fclean: clean
 # Recompiles everything.
 re: fclean all
 
+# A list with rules that are always dirty.
 .PHONY: all bonus clean fclean nor re
