@@ -11,7 +11,7 @@ struct s_stack	*stack_new(int content)
 		return (NULL);
 	ret->content = content;
 	ret->previous = NULL;
-	ret->previous = NULL;
+	ret->next = NULL;
 	ret->index = 0;
 	return (ret);
 }
@@ -55,12 +55,12 @@ void	stack_delete(struct s_stack *this)
 
 void	stack_clear(struct s_stack *this)
 {
-	struct s_stack	*tmp;
+	struct s_stack	*n;
 
 	while (this != NULL)
 	{
-		tmp = this->next;
+		n = this->next;
 		stack_delete(this);
-		this = tmp;
+		this = n;
 	}
 }
