@@ -7,6 +7,8 @@
 
 void	delegate(int argc, char **argv, struct s_stack_heads *heads)
 {
+	heads->a = NULL;
+	heads->b = NULL;
 	if (!input_parse(argc, argv, heads))
 	{
 		write(2, "Error\n", 6);
