@@ -5,8 +5,8 @@
  * Stores the heads of the stacks.
  */
 struct s_stack_heads {
-	struct s_stack *a;
-	struct s_stack *b;
+	struct s_stack	*a;
+	struct s_stack	*b;
 };
 
 /*

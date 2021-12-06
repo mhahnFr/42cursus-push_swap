@@ -8,22 +8,30 @@
 
 bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 {
+	int		i;
+	size_t	j;
+
 	if (input == NULL || *input == NULL || heads == NULL)
 		return (false);
-	for (int i = 1; i < argc; i++) {
+	i = 1;
+	while (i < argc)
+	{
 		char **s = ft_split(input[i], ' ');
 		if (s == NULL || *s == NULL)
 			return (false);
-		for (size_t j = 0; s[j] != NULL; j++) {
-			for (size_t k = 0; s[j][k] != '\0'; k++)
-				if (!ft_isdigit(s[j][k]))
-					return (false);
+		j = 0;
+		while (s[j] != NULL)
+		{
+			if (!ft_is_digits(s[j]))
+				return (false);
 			struct s_stack *tmp = stack_new(ft_atoi(s[j]));
 			if (tmp == NULL)
 				return (false);
 			stack_append(&heads->a, tmp);
+			j++;
 		}
 		ft_delete_split_array(s);
+		i++;
 	}
 	return (true);
 }

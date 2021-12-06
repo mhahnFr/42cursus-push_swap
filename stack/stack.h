@@ -10,8 +10,8 @@
 struct s_stack {
 	int				content;
 	size_t			index;
-	struct s_stack *next;
-	struct s_stack *previous;
+	struct s_stack	*next;
+	struct s_stack	*previous;
 };
 
 /*
