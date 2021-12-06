@@ -1,6 +1,8 @@
 #ifndef STACK_H
 # define STACK_H
 
+# include <stdbool.h>
+
 /*
  * Represents a stack element. Consists of the index of the element, the value
  * and a next and previous pointer.
@@ -28,6 +30,11 @@ void			stack_append(struct s_stack **this, struct s_stack *appendix);
  * Deletes the given stack. Does nothing if no stack is given.
  */
 void			stack_delete(struct s_stack *this);
+
+/*
+ * Deletes the given list. Does nothing if no list is given.
+ */
+void			stack_clear(struct s_stack *this);
 
 /*
  * Swaps the first two elements of the given stack. Does nothing if no stack is
