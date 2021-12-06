@@ -1,5 +1,6 @@
 # All source files.
-SRC = ./main.c ./input/input_check.c ./input/input_parse.c ./sort/sort.c
+SRC = ./main.c ./input/input_check.c ./input/input_parse.c ./sort/sort.c	  \
+	  ./stack/stack.c ./utils/utils.c
 
 # The object files.
 OBJ = $(patsubst %.c,%.o,$(SRC))

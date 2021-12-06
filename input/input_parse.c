@@ -4,6 +4,7 @@
 
 #include "input.h"
 #include "stack/stack.h"
+#include "utils/utils.h"
 
 bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 {
@@ -22,6 +23,7 @@ bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 				return (false);
 			stack_append(&heads->a, tmp);
 		}
+		ft_delete_split_array(s);
 	}
 	return (true);
 }
