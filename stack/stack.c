@@ -16,6 +16,19 @@ struct s_stack	*stack_new(int content)
 	return (ret);
 }
 
+bool	stack_append_new(struct s_stack **this, int content)
+{
+	struct s_stack	*tmp;
+
+	tmp = stack_new(content);
+	if (tmp == NULL)
+		return (false);
+	if (this == NULL)
+		return (false);
+	stack_append(this, tmp);
+	return (true);
+}
+
 void	stack_append(struct s_stack **this, struct s_stack *appendix)
 {
 	if (this == NULL)

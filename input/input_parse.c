@@ -11,7 +11,6 @@ bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 	int				i;
 	size_t			j;
 	char			**s;
-	struct s_stack	*tmp;
 
 	if (input == NULL || *input == NULL || heads == NULL)
 		return (false);
@@ -26,10 +25,8 @@ bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 		{
 			if (!ft_is_digits(s[j]))
 				return (false);
-			tmp = stack_new(ft_atoi(s[j]));
-			if (tmp == NULL)
+			if (!stack_append_new(&heads->a, ft_atoi(s[j])))
 				return (false);
-			stack_append(&heads->a, tmp);
 			j++;
 		}
 		ft_delete_split_array(s);

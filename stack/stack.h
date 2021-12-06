@@ -27,6 +27,13 @@ struct s_stack	*stack_new(int content);
 void			stack_append(struct s_stack **this, struct s_stack *appendix);
 
 /*
+ * Creates a new element with the given content and appends it to the given
+ * list. Returns false if no list is given or the allocation failed, true
+ * otherwise.
+ */
+bool			stack_append_new(struct s_stack **this, int content);
+
+/*
  * Deletes the given stack. Does nothing if no stack is given.
  */
 void			stack_delete(struct s_stack *this);
