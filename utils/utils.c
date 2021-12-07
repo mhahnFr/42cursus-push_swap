@@ -40,11 +40,11 @@ bool	ft_is_digits(char *string)
 bool	ft_isspace(char c)
 {
 	return (c == ' '
-			|| c == '\t'
-			|| c == '\n'
-			|| c == '\v'
-			|| c == '\f'
-			|| c == '\r');
+		|| c == '\t'
+		|| c == '\n'
+		|| c == '\v'
+		|| c == '\f'
+		|| c == '\r');
 }
 
 long	ft_atol(char *string)
