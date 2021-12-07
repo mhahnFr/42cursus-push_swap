@@ -25,7 +25,7 @@ bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 		{
 			if (!ft_is_digits(s[j]))
 				return (false);
-			if (!stack_append_new(&heads->a, ft_atoi(s[j])))
+			if (!stack_append_new(&heads->a, ft_atol(s[j])))
 				return (false);
 			j++;
 		}

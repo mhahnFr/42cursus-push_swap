@@ -9,7 +9,7 @@ void	delegate(int argc, char **argv, struct s_stack_heads *heads)
 {
 	heads->a = NULL;
 	heads->b = NULL;
-	if (!input_parse(argc, argv, heads))
+	if (!input_parse(argc, argv, heads) || !input_check(heads))
 	{
 		write(2, "Error\n", 6);
 		return ;
@@ -26,5 +26,5 @@ int	main(int argc, char **argv)
 	delegate(argc, argv, &heads);
 	stack_clear(heads.a);
 	stack_clear(heads.b);
-	system("leaks push_swap");
+//	system("leaks push_swap");
 }

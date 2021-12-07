@@ -8,7 +8,7 @@
  * and a next and previous pointer.
  */
 struct s_stack {
-	int				content;
+	long			content;
 	size_t			index;
 	struct s_stack	*next;
 	struct s_stack	*previous;
@@ -18,7 +18,7 @@ struct s_stack {
  * Allocates a new element. Returns either the newly allocated element or null
  * if the allocation failed.
  */
-struct s_stack	*stack_new(int content);
+struct s_stack	*stack_new(long content);
 
 /*
  * Appends the given element to the given stack list. Does nothing if no
@@ -31,7 +31,7 @@ void			stack_append(struct s_stack **this, struct s_stack *appendix);
  * list. Returns false if no list is given or the allocation failed, true
  * otherwise.
  */
-bool			stack_append_new(struct s_stack **this, int content);
+bool			stack_append_new(struct s_stack **this, long content);
 
 /*
  * Deletes the given stack. Does nothing if no stack is given.

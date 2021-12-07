@@ -2,7 +2,7 @@
 
 #include "stack.h"
 
-struct s_stack	*stack_new(int content)
+struct s_stack	*stack_new(long content)
 {
 	struct s_stack	*ret;
 
@@ -16,7 +16,7 @@ struct s_stack	*stack_new(int content)
 	return (ret);
 }
 
-bool	stack_append_new(struct s_stack **this, int content)
+bool	stack_append_new(struct s_stack **this, long content)
 {
 	struct s_stack	*tmp;
 
