@@ -18,7 +18,6 @@ void	delegate(int argc, char **argv, struct s_stack_heads *heads)
 		sort(heads);
 }
 
-#include <stdlib.h>
 int	main(int argc, char **argv)
 {
 	struct s_stack_heads	heads;
@@ -26,5 +25,4 @@ int	main(int argc, char **argv)
 	delegate(argc, argv, &heads);
 	stack_clear(heads.a);
 	stack_clear(heads.b);
-	system("leaks push_swap");
 }
