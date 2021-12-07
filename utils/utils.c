@@ -8,7 +8,7 @@ void	ft_delete_split_array(char **array)
 {
 	size_t	i;
 
-	if (array == NULL || *array == NULL)
+	if (array == NULL)
 		return ;
 	i = 0;
 	while (array[i] != NULL)
@@ -23,7 +23,7 @@ bool	ft_is_digits(char *string)
 {
 	size_t	i;
 
-	if (string == NULL)
+	if (string == NULL || *string == '\0')
 		return (false);
 	i = 0;
 	if (string[i] == '-' || string[i] == '+')

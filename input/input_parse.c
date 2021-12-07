@@ -6,11 +6,29 @@
 #include "stack/stack.h"
 #include "utils/utils.h"
 
+bool	input_append(char **array, struct s_stack **head)
+{
+	size_t	i;
+
+	if (*array == NULL)
+		return (false);
+	i = 0;
+	while (array[i] != NULL)
+	{
+		if (!ft_is_digits(array[i]))
+			return (false);
+		if (!stack_append_new(head, ft_atol(array[i])))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 {
-	int				i;
-	size_t			j;
-	char			**s;
+	int		i;
+	char	**s;
+	bool	test;
 
 	if (input == NULL || *input == NULL || heads == NULL)
 		return (false);
@@ -18,18 +36,12 @@ bool	input_parse(int argc, char **input, struct s_stack_heads *heads)
 	while (i < argc)
 	{
 		s = ft_split(input[i], ' ');
-		if (s == NULL || *s == NULL)
+		if (s == NULL)
 			return (false);
-		j = 0;
-		while (s[j] != NULL)
-		{
-			if (!ft_is_digits(s[j]))
-				return (false);
-			if (!stack_append_new(&heads->a, ft_atol(s[j])))
-				return (false);
-			j++;
-		}
+		test = input_append(s, &heads->a);
 		ft_delete_split_array(s);
+		if (!test)
+			return (false);
 		i++;
 	}
 	return (true);

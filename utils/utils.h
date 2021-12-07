@@ -12,7 +12,8 @@ void	ft_delete_split_array(char **array);
 
 /*
  * Returns wether the given string contains only digits. A sign at the
- * beginning is however allowed. If no string is given, false is returned.
+ * beginning is however allowed. If an empty or no string is given, false is
+ * returned.
  */
 bool	ft_is_digits(char *string);
 
