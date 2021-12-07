@@ -28,6 +28,8 @@ bool	ft_is_digits(char *string)
 	i = 0;
 	if (string[i] == '-' || string[i] == '+')
 		i++;
+	if (string[i] == '\0')
+		return (false);
 	while (string[i] != '\0')
 	{
 		if (!ft_isdigit(string[i]))
