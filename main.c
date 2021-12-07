@@ -16,6 +16,8 @@ void	delegate(int argc, char **argv, struct s_stack_heads *heads)
 	}
 	if (!is_sorted(heads))
 		sort(heads);
+//	stack_print(heads->a);
+//	stack_print(heads->b);
 }
 
 int	main(int argc, char **argv)

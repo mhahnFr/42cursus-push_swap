@@ -6,7 +6,20 @@
 
 void	sort(struct s_stack_heads *heads)
 {
-	heads = (struct s_stack_heads *) 0;
+	/*
+	 * for each element
+	 * 	if first
+	 * 		pb
+	 * 	else
+	 * 		for each element in b
+	 * 			if element < topB
+	 * 				pb
+	 * 				break
+	 * 			rb
+	 * 		if not pushed
+	 * 			pb
+	 * 	remember last element
+	 */
 }
 
 bool	is_sorted(struct s_stack_heads *heads)
