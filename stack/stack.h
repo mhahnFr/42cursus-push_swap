@@ -44,6 +44,17 @@ void			stack_delete(struct s_stack *this);
 void			stack_clear(struct s_stack *this);
 
 /*
+ * Prints the given stack.
+ */
+void			stack_print(struct s_stack *this);
+
+/*
+ * Returns wether the given content is already stored in the given list. False
+ * is returned if no list is given.
+ */
+bool			stack_contains(struct s_stack *this, long content);
+
+/*
  * Swaps the first two elements of the given stack. Does nothing if no stack is
  * given or the stack does not contain enough elements.
  */

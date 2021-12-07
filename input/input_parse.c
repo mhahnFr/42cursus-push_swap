@@ -9,15 +9,19 @@
 bool	input_append(char **array, struct s_stack **head)
 {
 	size_t	i;
+	long	number;
 
-	if (*array == NULL)
+	if (*array == NULL || head == NULL)
 		return (false);
 	i = 0;
 	while (array[i] != NULL)
 	{
 		if (!ft_is_digits(array[i]))
 			return (false);
-		if (!stack_append_new(head, ft_atol(array[i])))
+		number = ft_atol(array[i]);
+		if (stack_contains(*head, number))
+			return (false);
+		if (!stack_append_new(head, number))
 			return (false);
 		i++;
 	}
