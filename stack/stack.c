@@ -20,10 +20,10 @@ bool	stack_append_new(struct s_stack **this, long content)
 {
 	struct s_stack	*tmp;
 
+	if (this == NULL)
+		return (false);
 	tmp = stack_new(content);
 	if (tmp == NULL)
-		return (false);
-	if (this == NULL)
 		return (false);
 	stack_append(this, tmp);
 	return (true);
