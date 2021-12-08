@@ -15,11 +15,34 @@ void	sort(struct s_stack_heads *heads)
 	 * 			if element < topB
 	 * 				pb
 	 * 				break
-	 * 			rb
+	 * 			rrb
 	 * 		if not pushed
 	 * 			pb
 	 * 	remember last element
 	 */
+	size_t a_size = stack_size(heads->a);
+	for (size_t i = 0; i < a_size; i++) {
+		if (i == 0) {
+			stack_push(&heads->a, &heads->b);
+		} else {
+			size_t b_size = stack_size(heads->b);
+			bool inserted = false;
+			for (size_t j = 0; j < b_size; j++) {
+				if (heads->a->content < heads->b->content) {
+					stack_push(&heads->a, &heads->b);
+					inserted = true;
+					break;
+				}
+				stack_rotate(&heads->b, false);
+			}
+			if (!inserted) {
+				stack_push(&heads->a, &heads->b);
+			}
+		}
+	}
+	a_size = stack_size(heads->b);
+	for (size_t i = 0; i < a_size; i++)
+		stack_push(&heads->b, &heads->a);
 }
 
 bool	is_sorted(struct s_stack_heads *heads)

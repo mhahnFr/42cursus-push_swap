@@ -10,7 +10,7 @@ void	stack_print(struct s_stack *this)
 	}
 	printf("\n---\n");
 	while (this != NULL) {
-		printf("Index: %zu, Content: %ld\n", this->index, this->content);
+		printf("Index: %zu: %ld\n", this->index, this->content);
 		this = this->next;
 	}
 }
