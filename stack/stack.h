@@ -1,6 +1,7 @@
 #ifndef STACK_H
 # define STACK_H
 
+# include <stddef.h>
 # include <stdbool.h>
 
 /*
@@ -49,10 +50,23 @@ void			stack_clear(struct s_stack *this);
 void			stack_print(struct s_stack *this);
 
 /*
+ * Resets the index of each element in the given list. The index of the first
+ * element will be zero, the next one will be one and so on. Does nothing if no
+ * list is given.
+ */
+void			stack_repair_indices(struct s_stack *this);
+
+/*
  * Returns wether the given content is already stored in the given list. False
  * is returned if no list is given.
  */
 bool			stack_contains(struct s_stack *this, long content);
+
+/*
+ * Returns the count of elements in the given stack. Returns zero if no stack
+ * is given.
+ */
+size_t			stack_size(struct s_stack *this);
 
 /*
  * Swaps the first two elements of the given stack. Does nothing if no stack is
@@ -64,13 +78,13 @@ void			swap(struct s_stack **this);
  * Pushes the first element of the given stack to the other one. Does nothing
  * if at least one stack is missing or no elements are left in the given stack.
  */
-void			push(struct s_stack **this, struct s_stack **to);
+void			stack_push(struct s_stack **this, struct s_stack **to);
 
 /*
  * Rotates the elements in the given stack. If reverse is false, the first
  * element will become the last one. Otherwise, the last elements will become
  * the first one.
  */
-void			rotate(struct s_stack **this, bool reverse);
+void			stack_rotate(struct s_stack **this, bool reverse);
 
 #endif
