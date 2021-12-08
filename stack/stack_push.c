@@ -21,5 +21,8 @@ void	stack_repair_indices(struct s_stack *this)
 
 	ctr = 0;
 	while (this != NULL)
+	{
 		this->index = ctr++;
+		this = this->next;
+	}
 }
