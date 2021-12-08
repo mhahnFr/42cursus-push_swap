@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <limits.h>
+#include <unistd.h>
 
 #include "stack/stack.h"
 #include "sort.h"
