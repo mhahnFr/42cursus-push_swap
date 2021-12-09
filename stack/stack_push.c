@@ -13,7 +13,6 @@ void	stack_push(struct s_stack **this, struct s_stack **to)
 	if (*this == tmp)
 		*this = NULL;
 	stack_repair_indices(*this);
-
 	if (*to != NULL)
 	{
 		(*to)->previous->next = tmp;
