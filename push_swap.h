@@ -9,6 +9,8 @@ struct s_stack_heads {
 	struct s_stack	*b;
 };
 
+void	stack_heads_print(struct s_stack_heads *this);
+
 /*
  * Swaps the first two elements in the stack A.
  */

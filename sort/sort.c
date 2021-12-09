@@ -5,6 +5,7 @@
 #include "stack/stack.h"
 #include "sort.h"
 
+#include <stdio.h>
 void	sort(struct s_stack_heads *heads)
 {
 	/*
@@ -23,32 +24,34 @@ void	sort(struct s_stack_heads *heads)
 	 */
 	size_t a_size = stack_size(heads->a);
 	for (size_t i = 0; i < a_size; i++) {
+		stack_heads_print(heads);
 		if (i == 0) {
 			stack_push(&heads->a, &heads->b);
-			write(1, "pb\n", 3);
+			printf("pb\n");
 		} else {
 			size_t b_size = stack_size(heads->b);
 			bool inserted = false;
 			for (size_t j = 0; j < b_size; j++) {
 				if (heads->a->content < heads->b->content) {
 					stack_push(&heads->a, &heads->b);
-					write(1, "pb\n", 3);
+					printf("pb\n");
 					inserted = true;
 					break;
 				}
 				stack_rotate(&heads->b, false);
-				write(1, "rb\n", 3);
+				printf("rb\n");
 			}
 			if (!inserted) {
 				stack_push(&heads->a, &heads->b);
-				write(1, "pb\n", 3);
+				printf("pb\n");
 			}
 		}
 	}
+	stack_heads_print(heads);
 	a_size = stack_size(heads->b);
 	for (size_t i = 0; i < a_size; i++) {
 		stack_push(&heads->b, &heads->a);
-		write(1, "pa\n", 3);
+		printf("pa\n");
 	}
 }
 

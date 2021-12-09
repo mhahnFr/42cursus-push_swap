@@ -14,12 +14,10 @@ void	delegate(int argc, char **argv, struct s_stack_heads *heads)
 		write(2, "Error\n", 6);
 		return ;
 	}
-	stack_print(heads->a);
-	stack_print(heads->b);
+	stack_heads_print(heads);
 	if (!is_sorted(heads))
 		sort(heads);
-	stack_print(heads->a);
-	stack_print(heads->b);
+	stack_heads_print(heads);
 }
 
 int	main(int argc, char **argv)
