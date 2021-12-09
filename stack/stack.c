@@ -38,11 +38,13 @@ void	stack_append(struct s_stack **this, struct s_stack *appendix)
 		*this = appendix;
 		(*this)->index = 0;
 		(*this)->previous = *this;
+		(*this)->next = *this;
 		return ;
 	}
 	(*this)->previous->next = appendix;
 	appendix->previous = (*this)->previous;
 	(*this)->previous = appendix;
+	appendix->next = *this;
 	appendix->index = appendix->previous->index + 1;
 }
 
@@ -56,11 +58,15 @@ void	stack_delete(struct s_stack *this)
 void	stack_clear(struct s_stack *this)
 {
 	struct s_stack	*n;
+	struct s_stack	*tmp;
 
+	tmp = this;
 	while (this != NULL)
 	{
 		n = this->next;
 		stack_delete(this);
 		this = n;
+		if (this == tmp)
+			break ;
 	}
 }

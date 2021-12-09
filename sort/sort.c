@@ -70,6 +70,8 @@ bool	is_sorted(struct s_stack_heads *heads)
 		else
 			return (false);
 		tmp = tmp->next;
+		if (tmp == heads->a)
+			break ;
 	}
 	return (true);
 }

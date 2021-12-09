@@ -16,6 +16,8 @@ bool	input_check(struct s_stack_heads *heads)
 		if (tmp->content < INT_MIN || tmp->content > INT_MAX)
 			return (false);
 		tmp = tmp->next;
+		if (tmp == heads->a)
+			break ;
 	}
 	return (true);
 }
