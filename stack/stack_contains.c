@@ -9,10 +9,13 @@ bool	stack_contains(struct s_stack *this, long content)
 	if (this == NULL)
 		return (false);
 	tmp = this;
-	do {
+	while (this != NULL)
+	{
 		if (this->content == content)
 			return (true);
 		this = this->next;
-	} while (this != tmp);
+		if (this == tmp)
+			break ;
+	}
 	return (false);
 }
