@@ -41,7 +41,11 @@ void	sort(struct s_stack_heads *heads)
 					stack_rotate(&heads->b, false);
 					printf("rb\n");
 					inserted = true;
-//					break;
+					for (size_t ctr = 0; ctr <= j; ctr++) {
+						stack_rotate(&heads->b, true);
+						printf("rrb\n");
+					}
+					break;
 				}
 				stack_rotate(&heads->b, false);
 				printf("rb\n");
