@@ -8,21 +8,6 @@
 #include <stdio.h>
 void	sort(struct s_stack_heads *heads)
 {
-	/*
-	 * for each element
-	 * 	if first
-	 * 		pb
-	 * 	else
-	 * 		for each element in b
-	 * 			if element < topB
-	 * 				pb
-	 * 				rb
-	 * 				break
-	 * 			rrb
-	 * 		if not pushed
-	 * 			pb
-	 * 			rb
-	 */
 	size_t a_size = stack_size(heads->a);
 	for (size_t i = 0; i < a_size; i++) {
 		stack_push(&heads->a, &heads->b);
