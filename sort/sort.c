@@ -35,7 +35,7 @@ void	sort(struct s_stack_heads *heads)
 			size_t b_size = stack_size(heads->b);
 			bool inserted = false;
 			for (size_t j = 0; j < b_size; j++) {
-				if (heads->a->content < heads->b->content && !inserted) {
+				if (heads->a->content < heads->b->content) {
 					stack_push(&heads->a, &heads->b);
 					printf("pb\n");
 					stack_rotate(&heads->b, false);
