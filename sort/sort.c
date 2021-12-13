@@ -5,55 +5,39 @@
 #include "stack/stack.h"
 #include "sort.h"
 
+// 150 elements: 1715 ops
 #include <stdio.h>
 void	sort(struct s_stack_heads *heads)
 {
-//	size_t a_size = stack_size(heads->a);
-//	for (size_t i = 0; i < a_size; i++) {
 	while (stack_size(heads->a) > 1) {
 		stack_push(&heads->a, &heads->b);
 		printf("pb\n");
 	}
-//	bool first = true;
 	while (heads->b != NULL) {
-//		stack_heads_print(heads);
-//		if (first) {
-//			stack_push(&heads->b, &heads->a);
-//			printf("pa\n");
-//			first = false;
-//		} else {
+		bool inserted = false;
+//		if (stack_is_in_range(heads->a, heads->b->content)) {
 			size_t b_size = stack_size(heads->a);
-			bool inserted = false;
-			for (size_t j = 0; j < b_size; j++) {
+			for (size_t j = 0; j < b_size && !inserted; j++) {
 				if (heads->b->content < heads->a->content) {
 					stack_push(&heads->b, &heads->a);
 					printf("pa\n");
-					stack_rotate(&heads->a, false);
-					printf("ra\n");
 					inserted = true;
 					for (size_t ctr = 0; ctr <= j; ctr++) {
 						stack_rotate(&heads->a, true);
 						printf("rra\n");
 					}
-					break;
 				}
 				stack_rotate(&heads->a, false);
 				printf("ra\n");
 			}
-			if (!inserted) {
-				stack_push(&heads->b, &heads->a);
-				printf("pa\n");
-				stack_rotate(&heads->a, false);
-				printf("ra\n");
-			}
 //		}
+		if (!inserted) {
+			stack_push(&heads->b, &heads->a);
+			printf("pa\n");
+			stack_rotate(&heads->a, false);
+			printf("ra\n");
+		}
 	}
-//	stack_heads_print(heads);
-//	a_size = stack_size(heads->b);
-//	for (size_t i = 0; i < a_size; i++) {
-//		stack_push(&heads->b, &heads->a);
-//		printf("pa\n");
-//	}
 }
 
 bool	is_sorted(struct s_stack_heads *heads)

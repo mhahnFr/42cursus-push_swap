@@ -87,4 +87,10 @@ void			stack_push(struct s_stack **this, struct s_stack **to);
  */
 void			stack_rotate(struct s_stack **this, bool reverse);
 
+/*
+ * Returns wether the given content is in the range described by the given
+ * stack. Returns false if no stack is given.
+ */
+bool			stack_is_in_range(struct s_stack *this, long content);
+
 #endif
