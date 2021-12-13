@@ -8,19 +8,20 @@
 #include <stdio.h>
 void	sort(struct s_stack_heads *heads)
 {
-	size_t a_size = stack_size(heads->a);
-	for (size_t i = 0; i < a_size; i++) {
+//	size_t a_size = stack_size(heads->a);
+//	for (size_t i = 0; i < a_size; i++) {
+	while (stack_size(heads->a) > 1) {
 		stack_push(&heads->a, &heads->b);
 		printf("pb\n");
 	}
-	bool first = true;
+//	bool first = true;
 	while (heads->b != NULL) {
 //		stack_heads_print(heads);
-		if (first) {
-			stack_push(&heads->b, &heads->a);
-			printf("pa\n");
-			first = false;
-		} else {
+//		if (first) {
+//			stack_push(&heads->b, &heads->a);
+//			printf("pa\n");
+//			first = false;
+//		} else {
 			size_t b_size = stack_size(heads->a);
 			bool inserted = false;
 			for (size_t j = 0; j < b_size; j++) {
@@ -45,7 +46,7 @@ void	sort(struct s_stack_heads *heads)
 				stack_rotate(&heads->a, false);
 				printf("ra\n");
 			}
-		}
+//		}
 	}
 //	stack_heads_print(heads);
 //	a_size = stack_size(heads->b);
