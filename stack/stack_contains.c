@@ -20,9 +20,19 @@ bool	stack_contains(struct s_stack *this, long content)
 	return (false);
 }
 
-bool	stack_is_in_range(struct s_stack *this, long content)
+bool	stack_is_bigger(struct s_stack *this, long content)
 {
-	if (this == NULL || stack_size(this) <= 1)
+	struct s_stack	*tmp;
+
+	if (this == NULL || stack_size(this) <= 2)
 		return (false);
-	return (/*this->content < content && */this->previous->content > content);
+	tmp = this;
+	while (true)
+	{
+		if (this->content < content)
+			return (false);
+		if (this == tmp)
+			break ;
+	}
+	return (true);
 }

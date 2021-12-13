@@ -15,7 +15,7 @@ void	sort(struct s_stack_heads *heads)
 	}
 	while (heads->b != NULL) {
 		bool inserted = false;
-//		if (stack_is_in_range(heads->a, heads->b->content)) {
+		if (!stack_is_bigger(heads->a, heads->b->content)) {
 			size_t b_size = stack_size(heads->a);
 			for (size_t j = 0; j < b_size && !inserted; j++) {
 				if (heads->b->content < heads->a->content) {
@@ -38,7 +38,7 @@ void	sort(struct s_stack_heads *heads)
 				stack_rotate(&heads->a, false);
 				printf("ra\n");
 			}
-//		}
+		}
 		if (!inserted) {
 			stack_push(&heads->b, &heads->a);
 			printf("pa\n");
