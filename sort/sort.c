@@ -22,9 +22,17 @@ void	sort(struct s_stack_heads *heads)
 					stack_push(&heads->b, &heads->a);
 					printf("pa\n");
 					inserted = true;
-					for (size_t ctr = 0; ctr <= j; ctr++) {
-						stack_rotate(&heads->a, true);
-						printf("rra\n");
+					size_t sta = stack_size(heads->a);
+					if (j <= sta) {
+						for (size_t ctr = 0; ctr <= j; ctr++) {
+							stack_rotate(&heads->a, true);
+							printf("rra\n");
+						}
+					} else {
+						for (size_t ctr = 0; ctr < sta - j; ctr++) {
+							stack_rotate(&heads->a, false);
+							printf("ra\n");
+						}
 					}
 				}
 				stack_rotate(&heads->a, false);

@@ -24,5 +24,5 @@ bool	stack_is_in_range(struct s_stack *this, long content)
 {
 	if (this == NULL || stack_size(this) <= 1)
 		return (false);
-	return (this->content < content && this->previous->content > content);
+	return (/*this->content < content && */this->previous->content > content);
 }
