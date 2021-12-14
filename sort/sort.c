@@ -14,30 +14,35 @@ void	sort(struct s_stack_heads *heads)
 		printf("pb\n");
 	}
 	while (heads->b != NULL) {
+//		size_t c = get_ops_def(heads);
+//		size_t o = get_ops_def_next(heads);
+//		if (c -5 > o) {
+//			stack_rotate(&heads->b, false);
+//			printf("rb\n");
+//		}
+//		printf("Default: %zuNext: %zu\n", c, o);
 		bool inserted = false;
-		if (!stack_is_bigger(heads->a, heads->b->content)) {
-			size_t b_size = stack_size(heads->a);
-			for (size_t j = 0; j < b_size && !inserted; j++) {
-				if (heads->b->content < heads->a->content) {
-					stack_push(&heads->b, &heads->a);
-					printf("pa\n");
-					inserted = true;
-					size_t sta = stack_size(heads->a);
-					if (j <= sta) {
-						for (size_t ctr = 0; ctr <= j; ctr++) {
-							stack_rotate(&heads->a, true);
-							printf("rra\n");
-						}
-					} else {
-						for (size_t ctr = 0; ctr < sta - j; ctr++) {
-							stack_rotate(&heads->a, false);
-							printf("ra\n");
-						}
+		size_t b_size = stack_size(heads->a);
+		for (size_t j = 0; j < b_size && !inserted; j++) {
+			if (heads->b->content < heads->a->content) {
+				stack_push(&heads->b, &heads->a);
+				printf("pa\n");
+				inserted = true;
+				size_t sta = stack_size(heads->a);
+				if (j <= sta / 2) {
+					for (size_t ctr = 0; ctr <= j; ctr++) {
+						stack_rotate(&heads->a, true);
+						printf("rra\n");
+					}
+				} else {
+					for (size_t ctr = 0; ctr < sta - j - 1; ctr++) {
+						stack_rotate(&heads->a, false);
+						printf("ra\n");
 					}
 				}
-				stack_rotate(&heads->a, false);
-				printf("ra\n");
 			}
+			stack_rotate(&heads->a, false);
+			printf("ra\n");
 		}
 		if (!inserted) {
 			stack_push(&heads->b, &heads->a);

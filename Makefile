@@ -2,7 +2,7 @@
 SRC = ./main.c ./input/input_check.c ./input/input_parse.c ./sort/sort.c	  \
 	  ./stack/stack.c ./utils/utils.c ./stack/stack_print.c					  \
 	  ./stack/stack_contains.c ./stack/stack_size.c ./stack/stack_rotate.c	  \
-	  ./stack/stack_push.c
+	  ./stack/stack_push.c ./sort/sort_ops.c
 
 # The object files.
 OBJ = $(patsubst %.c,%.o,$(SRC))
