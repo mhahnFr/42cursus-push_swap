@@ -2,12 +2,12 @@
 # define OPERATION_H
 
 enum e_operation {
-	RA,
 	SA,
 	SB,
 	SS,
 	PA,
 	PB,
+	RA,
 	RB,
 	RR,
 	RRA,

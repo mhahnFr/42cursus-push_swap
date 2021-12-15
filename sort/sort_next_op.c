@@ -18,6 +18,7 @@ t_arraylist	*get_next_operation(t_arraylist *past, struct s_stack_heads *heads)
 		next = get_default_operation(past, heads);
 	//	next = simulate_next_operation(past, heads);
 	arraylist_append_unsafe(&past, arraylist_new((void *) next));
+	printf("%p\n", past->previous->content);
 	return (get_next_operation(past, heads));
 }
 
