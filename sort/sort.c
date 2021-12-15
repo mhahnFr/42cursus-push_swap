@@ -2,25 +2,47 @@
 #include <limits.h>
 #include <unistd.h>
 
+#include "arraylist.h"
+
+#include "operation.h"
 #include "stack/stack.h"
 #include "sort.h"
 
-// 150 elements: 1715 ops
 #include <stdio.h>
 void	sort(struct s_stack_heads *heads)
 {
+	t_arraylist			*instructions;
+	enum e_operation	op;
+
 	while (stack_size(heads->a) > 1) {
 		stack_push(&heads->a, &heads->b);
 		printf("pb\n");
 	}
-	while (heads->b != NULL) {
-//		size_t c = get_ops_def(heads);
-//		size_t o = get_ops_def_next(heads);
-//		if (c -5 > o) {
-//			stack_rotate(&heads->b, false);
-//			printf("rb\n");
-//		}
-//		printf("Default: %zuNext: %zu\n", c, o);
+	while (heads->b != NULL)
+	{
+		instructions = get_next_operation(NULL, heads);
+		while (instructions != NULL)
+		{
+			op = (enum e_operation) instructions->content;
+			if (op == RA || op == RR)
+			{
+				stack_rotate(&heads->a, false);
+				printf("ra\n");
+			}
+			if (op == RB || op == RR)
+			{
+				stack_rotate(&heads->b, false);
+				printf("rb\n");
+			}
+			if (op == PA)
+			{
+				stack_push(&heads->b, &heads->a);
+				printf("pa\n");
+			}
+		}
+		arraylist_clear(&instructions, NULL);
+	}
+/*	while (heads->b != NULL) {
 		bool inserted = false;
 		size_t b_size = stack_size(heads->a);
 		for (size_t j = 0; j < b_size && !inserted; j++) {
@@ -50,7 +72,7 @@ void	sort(struct s_stack_heads *heads)
 			stack_rotate(&heads->a, false);
 			printf("ra\n");
 		}
-	}
+	}*/
 }
 
 bool	is_sorted(struct s_stack_heads *heads)
