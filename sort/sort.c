@@ -34,11 +34,22 @@ void	sort(struct s_stack_heads *heads)
 				stack_rotate(&heads->b, false);
 				printf("rb\n");
 			}
+			if (op == RRA || op == RRR)
+			{
+				stack_rotate(&heads->a, true);
+				printf("rra\n");
+			}
+			if (op == RRB || op == RRR)
+			{
+				stack_rotate(&heads->b, true);
+				printf("rrb\n");
+			}
 			if (op == PA)
 			{
 				stack_push(&heads->b, &heads->a);
 				printf("pa\n");
 			}
+			instructions = instructions->next;
 		}
 		arraylist_clear(&instructions, NULL);
 	}

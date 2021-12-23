@@ -6,7 +6,8 @@ SRC = ./main.c ./input/input_check.c ./input/input_parse.c ./sort/sort.c	  \
 	  ./arraylist/arraylist.c ./arraylist/arraylist_array.c 				  \
 	  ./arraylist/arraylist_array_unsafe.c ./arraylist/arraylist_get.c		  \
 	  ./arraylist/arraylist_insert.c ./arraylist/arraylist_remove.c			  \
-	  ./arraylist/arraylist_reset_indices.c ./arraylist/arraylist_size.c
+	  ./arraylist/arraylist_reset_indices.c ./arraylist/arraylist_size.c	  \
+	  ./sort/sort_ops_back.c
 
 # The object files.
 OBJ = $(patsubst %.c,%.o,$(SRC))

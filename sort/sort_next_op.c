@@ -10,7 +10,8 @@ t_arraylist	*get_next_operation(t_arraylist *past, struct s_stack_heads *heads)
 	enum e_operation	next;
 
 	if (past != NULL && (enum e_operation) past->previous->content == PA)
-		return (past);
+		return (rotate_back(heads, past));
+//		return (past);
 	next = NONE;
 	if (arraylist_size_unsafe(past) == 0)
 		next = get_default_operation(past, heads);
@@ -18,7 +19,6 @@ t_arraylist	*get_next_operation(t_arraylist *past, struct s_stack_heads *heads)
 		next = get_default_operation(past, heads);
 	//	next = simulate_next_operation(past, heads);
 	arraylist_append_unsafe(&past, arraylist_new((void *) next));
-	printf("%p\n", past->previous->content);
 	return (get_next_operation(past, heads));
 }
 
@@ -42,15 +42,22 @@ enum e_operation	get_default_operation(t_arraylist *past, struct s_stack_heads *
 {
 	struct s_stack	*a;
 	struct s_stack	*b;
+	t_arraylist		*tmp;
 
 	a = heads->a;
 	b = heads->b;
-	while (past != NULL)
+	tmp = past;
+	bool loop_executed = false;
+	while (tmp != NULL)
 	{
-		apply_operations(&a, &b, (enum e_operation) past->content);
-		past = past->next;
+		loop_executed = true;
+		apply_operations(&a, &b, (enum e_operation) tmp->content);
+		tmp = tmp->next;
 	}
 	if (b->content < a->content)
+		return (PA);
+	//if (a == heads->a && stack_size(a) == 1)
+	if (a == heads->a && loop_executed)
 		return (PA);
 	return (RA);
 }

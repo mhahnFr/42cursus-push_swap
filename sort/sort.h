@@ -32,7 +32,11 @@ size_t						get_ops_def(struct s_stack_heads *heads);
  */
 size_t						get_ops_def_next(struct s_stack_heads *heads);
 
+t_arraylist					*rotate_back(struct s_stack_heads *heads, t_arraylist *past);
+
 t_arraylist					*get_next_operation(t_arraylist *past, struct s_stack_heads *heads);
+
+void						apply_operations(struct s_stack **a, struct s_stack **b, enum e_operation operation);
 
 enum e_operation			get_default_operation(
 								t_arraylist *past,
