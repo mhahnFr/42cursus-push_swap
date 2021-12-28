@@ -87,6 +87,17 @@ void			stack_push(struct s_stack **this, struct s_stack **to);
  */
 void			stack_rotate(struct s_stack **this, bool reverse);
 
+/*
+ * Rotates the elements in the given stack. If reverse is false, the first
+ * element will become the last one. Otherwise, the last elements will become
+ * the first one. If adjustIndices is true, the indices of the elements in the
+ * given stack are corrected after performing the rotation.
+ */
+void			stack_rotate_adjust(
+					struct s_stack **this,
+					bool reverse,
+					bool adjustIndices);
+
 bool			stack_is_bigger(struct s_stack *this, long content);
 
 #endif
