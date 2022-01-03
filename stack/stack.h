@@ -80,6 +80,12 @@ void			swap(struct s_stack **this);
  */
 void			stack_push(struct s_stack **this, struct s_stack **to);
 
+/*
+ * Pushes the first element of the given stack to the other one. Does nothing
+ * if at least one stack is missing or no elements are left in the given stack.
+ * If the flag is given, the indices are corrected after performing the
+ * operation.
+ */
 void			stack_push_adjust(
 					struct s_stack **this,
 					struct s_stack **to,
@@ -102,7 +108,5 @@ void			stack_rotate_adjust(
 					struct s_stack **this,
 					bool reverse,
 					bool adjustIndices);
-
-bool			stack_is_bigger(struct s_stack *this, long content);
 
 #endif
