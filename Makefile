@@ -2,12 +2,7 @@
 SRC = ./main.c ./input/input_check.c ./input/input_parse.c ./sort/sort.c	  \
 	  ./stack/stack.c ./utils/utils.c ./stack/stack_print.c					  \
 	  ./stack/stack_contains.c ./stack/stack_size.c ./stack/stack_rotate.c	  \
-	  ./stack/stack_push.c ./sort/sort_ops.c ./sort/sort_next_op.c			  \
-	  ./arraylist/arraylist.c ./arraylist/arraylist_array.c 				  \
-	  ./arraylist/arraylist_array_unsafe.c ./arraylist/arraylist_get.c		  \
-	  ./arraylist/arraylist_insert.c ./arraylist/arraylist_remove.c			  \
-	  ./arraylist/arraylist_reset_indices.c ./arraylist/arraylist_size.c	  \
-	  ./sort/sort_ops_back.c
+	  ./stack/stack_push.c
 
 # The object files.
 OBJ = $(patsubst %.c,%.o,$(SRC))
@@ -28,7 +23,7 @@ LFT_A = libft.a
 LFT_P = $(LFT_D)/$(LFT_A)
 
 # The includes.
-INCL = -I. -I$(LFT_D) -I./arraylist
+INCL = -I. -I$(LFT_D)
 
 # The flags for the linker.
 LDFLAGS = -L$(LFT_D) -lft

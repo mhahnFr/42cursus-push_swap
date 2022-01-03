@@ -80,7 +80,10 @@ void			swap(struct s_stack **this);
  */
 void			stack_push(struct s_stack **this, struct s_stack **to);
 
-void			stack_push_adjust(struct s_stack **this, struct s_stack **to, bool adjust);
+void			stack_push_adjust(
+					struct s_stack **this,
+					struct s_stack **to,
+					bool adjust);
 
 /*
  * Rotates the elements in the given stack. If reverse is false, the first

@@ -2,9 +2,6 @@
 #include <limits.h>
 #include <unistd.h>
 
-#include "arraylist.h"
-
-#include "operation.h"
 #include "stack/stack.h"
 #include "sort.h"
 

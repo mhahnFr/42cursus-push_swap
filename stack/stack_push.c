@@ -1,6 +1,8 @@
 #include "stack.h"
 
-void	stack_push_adjust(struct s_stack **this, struct s_stack **to, bool adjust)
+static void	stack_push_core(
+				struct s_stack **this,
+				struct s_stack **to)
 {
 	struct s_stack	*tmp;
 
@@ -12,8 +14,6 @@ void	stack_push_adjust(struct s_stack **this, struct s_stack **to, bool adjust)
 	*this = (*this)->next;
 	if (*this == tmp)
 		*this = NULL;
-	if (adjust)
-		stack_repair_indices(*this);
 	if (*to != NULL)
 	{
 		(*to)->previous->next = tmp;
@@ -27,8 +27,19 @@ void	stack_push_adjust(struct s_stack **this, struct s_stack **to, bool adjust)
 		tmp->next = tmp;
 	}
 	*to = tmp;
+}
+
+void	stack_push_adjust(
+			struct s_stack **this,
+			struct s_stack **to,
+			bool adjust)
+{
+	stack_push_core(this, to);
 	if (adjust)
+	{
+		stack_repair_indices(*this);
 		stack_repair_indices(*to);
+	}
 }
 
 void	stack_push(struct s_stack **this, struct s_stack **to)
