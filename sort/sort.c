@@ -8,7 +8,6 @@
 #include "stack/stack.h"
 #include "sort.h"
 
-#include <stdio.h>
 void	set_indices(struct s_stack *stack)
 {
 	size_t			i;
@@ -55,19 +54,19 @@ void	sort(struct s_stack_heads *heads)
 			if ((heads->a->index >> si & 1) == 0)
 			{
 				stack_push(&heads->a, &heads->b);
-				printf("pb\n");
+				write(1, "pb\n", 3);
 			}
 			else
 			{
 				stack_rotate(&heads->a, false);
-				printf("ra\n");
+				write(1, "ra\n", 3);
 			}
 			i++;
 		}
 		while (heads->b != NULL)
 		{
 			stack_push(&heads->b, &heads->a);
-			printf("pa\n");
+			write(1, "pa\n", 3);
 		}
 		si++;
 	}
