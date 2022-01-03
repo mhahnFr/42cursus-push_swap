@@ -17,9 +17,9 @@ void	set_indices(struct s_stack *stack)
 	long			stop;
 
 	stop = INT_MIN;
-	a = 0;
+	a = 1;
 	size = stack_size(stack);
-	while (a < size)
+	while (a <= size)
 	{
 		i = 0;
 		min = INT_MAX;
@@ -46,7 +46,7 @@ void	sort(struct s_stack_heads *heads)
 	init_size = stack_size(heads->a);
 	set_indices(heads->a);
 	size_t si = 0;
-	while (si < 32)
+	while (!is_sorted(heads) && si < 32)
 	{
 		i = 0;
 		while (i < init_size)
@@ -70,7 +70,6 @@ void	sort(struct s_stack_heads *heads)
 		}
 		si++;
 	}
-	// Check how many binary digits are needed.
 }
 
 bool	is_sorted(struct s_stack_heads *heads)
