@@ -9,81 +9,69 @@
 #include "sort.h"
 
 #include <stdio.h>
+void	set_indices(struct s_stack *stack)
+{
+	size_t			i;
+	size_t			a;
+	size_t			size;
+	long			min;
+	long			stop;
+
+	stop = INT_MIN;
+	a = 0;
+	size = stack_size(stack);
+	while (a < size)
+	{
+		i = 0;
+		min = INT_MAX;
+		while (i < size)
+		{
+			if (stack->content < min && stack->content > stop)
+			{
+				stack->index = a;
+				min = stack->content;
+			}
+			stack = stack->next;
+			i++;
+		}
+		stop = min;
+		a++;
+	}
+}
+
 void	sort(struct s_stack_heads *heads)
 {
-	t_arraylist			*instructions;
-	enum e_operation	op;
+	size_t	i;
+	size_t	init_size;
 
-	while (stack_size(heads->a) > 1) {
-		stack_push(&heads->a, &heads->b);
-		printf("pb\n");
-	}
-	while (heads->b != NULL)
+	init_size = stack_size(heads->a);
+	set_indices(heads->a);
+	size_t si = 0;
+	while (si < 32)
 	{
-		instructions = get_next_operation(NULL, heads);
-		while (instructions != NULL)
+		i = 0;
+		while (i < init_size)
 		{
-			op = (enum e_operation) instructions->content;
-			if (op == RA || op == RR)
+			if ((heads->a->index >> si & 1) == 0)
+			{
+				stack_push(&heads->a, &heads->b);
+				printf("pb\n");
+			}
+			else
 			{
 				stack_rotate(&heads->a, false);
 				printf("ra\n");
 			}
-			if (op == RB || op == RR)
-			{
-				stack_rotate(&heads->b, false);
-				printf("rb\n");
-			}
-			if (op == RRA || op == RRR)
-			{
-				stack_rotate(&heads->a, true);
-				printf("rra\n");
-			}
-			if (op == RRB || op == RRR)
-			{
-				stack_rotate(&heads->b, true);
-				printf("rrb\n");
-			}
-			if (op == PA)
-			{
-				stack_push(&heads->b, &heads->a);
-				printf("pa\n");
-			}
-			instructions = instructions->next;
+			i++;
 		}
-		arraylist_clear(&instructions, NULL);
-	}
-/*	while (heads->b != NULL) {
-		bool inserted = false;
-		size_t b_size = stack_size(heads->a);
-		for (size_t j = 0; j < b_size && !inserted; j++) {
-			if (heads->b->content < heads->a->content) {
-				stack_push(&heads->b, &heads->a);
-				printf("pa\n");
-				inserted = true;
-				size_t sta = stack_size(heads->a);
-				if (j <= sta / 2) {
-					for (size_t ctr = 0; ctr <= j; ctr++) {
-						stack_rotate(&heads->a, true);
-						printf("rra\n");
-					}
-				} else {
-					for (size_t ctr = 0; ctr < sta - j - 1; ctr++) {
-						stack_rotate(&heads->a, false);
-						printf("ra\n");
-					}
-				}
-			}
-			stack_rotate(&heads->a, false);
-			printf("ra\n");
-		}
-		if (!inserted) {
+		while (heads->b != NULL)
+		{
 			stack_push(&heads->b, &heads->a);
 			printf("pa\n");
-			stack_rotate(&heads->a, false);
-			printf("ra\n");
 		}
-	}*/
+		si++;
+	}
+	// Check how many binary digits are needed.
 }
 
 bool	is_sorted(struct s_stack_heads *heads)
