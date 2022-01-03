@@ -41,11 +41,12 @@ void	set_indices(struct s_stack *stack)
 void	sort(struct s_stack_heads *heads)
 {
 	size_t	i;
+	size_t	si;
 	size_t	init_size;
 
 	init_size = stack_size(heads->a);
 	set_indices(heads->a);
-	size_t si = 0;
+	si = 0;
 	while (!is_sorted(heads) && si < 32)
 	{
 		i = 0;
