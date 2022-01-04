@@ -4,18 +4,19 @@
 #include "input/input.h"
 #include "sort/sort.h"
 #include "stack/stack.h"
+#include "sort/hard/sort_hard.h"
 
 /*
  * Delegates the given stack to the appopriate sorting algorithm.
  */
 static void	delegate_sort(struct s_stack_heads *heads)
 {
-	size_t	stack_size;
+	size_t	s_size;
 
-	stack_size = stack_size(heads->a);
-	if (stack_size <= 3)
+	s_size = stack_size(heads->a);
+	if (s_size <= 3)
 		hard_sort(heads);
-	else if (stack_size <= 5)
+	else if (s_size <= 5)
 		hard_sort_big(heads);
 	else
 		sort(heads);

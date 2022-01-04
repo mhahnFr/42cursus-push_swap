@@ -16,4 +16,9 @@ bool	is_sorted(struct s_stack_heads *heads);
  */
 void	sort(struct s_stack_heads *heads);
 
+/*
+ * Sets the indices to represent the order of the stack.
+ */
+void	set_indices(struct s_stack *stack);
+
 #endif

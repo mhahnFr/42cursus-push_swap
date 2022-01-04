@@ -72,7 +72,7 @@ size_t			stack_size(struct s_stack *this);
  * Swaps the first two elements of the given stack. Does nothing if no stack is
  * given or the stack does not contain enough elements.
  */
-void			swap(struct s_stack **this);
+void			stack_swap(struct s_stack **this);
 
 /*
  * Pushes the first element of the given stack to the other one. Does nothing
@@ -107,6 +107,8 @@ void			stack_rotate(struct s_stack **this, bool reverse);
 void			stack_rotate_adjust(
 					struct s_stack **this,
 					bool reverse,
-					bool adjustIndices);
+					bool adjust_indices);
+
+void			stack_swap_adjust(struct s_stack **this, bool adjust_indices);
 
 #endif

@@ -50,7 +50,7 @@ void	set_indices(struct s_stack *stack)
 	}
 }
 
-void	push_or_rotate(struct s_stack_heads *heads, size_t bit_count)
+static void	push_or_rotate(struct s_stack_heads *heads, size_t bit_count)
 {
 	if ((heads->a->index >> bit_count & 1) == 0)
 	{
