@@ -5,33 +5,57 @@
 #include "stack/stack.h"
 #include "sort.h"
 
+static size_t	find_smallest(
+					struct s_stack *stack,
+					long minimum,
+					size_t stack_size,
+					size_t new_index)
+{
+	long	min;
+	size_t	i;
+
+	i = 0;
+	min = INT_MAX;
+	while (i < stack_size)
+	{
+		if (stack->content < min && stack->content > minimum)
+		{
+			stack->index = new_index;
+			min = stack->content;
+		}
+		stack = stack->next;
+		i++;
+	}
+	return (min);
+}
+
 void	set_indices(struct s_stack *stack)
 {
-	size_t			i;
-	size_t			a;
-	size_t			size;
-	long			min;
-	long			stop;
+	size_t	i;
+	size_t	size;
+	long	stop;
 
 	stop = INT_MIN;
-	a = 1;
+	i = 1;
 	size = stack_size(stack);
-	while (a <= size)
+	while (i <= size)
 	{
-		i = 0;
-		min = INT_MAX;
-		while (i < size)
-		{
-			if (stack->content < min && stack->content > stop)
-			{
-				stack->index = a;
-				min = stack->content;
-			}
-			stack = stack->next;
-			i++;
-		}
-		stop = min;
-		a++;
+		stop = find_smallest(stack, stop, size, i);
+		i++;
+	}
+}
+
+void	push_or_rotate(struct s_stack_heads *heads, size_t bit_count)
+{
+	if ((heads->a->index >> bit_count & 1) == 0)
+	{
+		stack_push(&heads->a, &heads->b);
+		write(1, "pb\n", 3);
+	}
+	else
+	{
+		stack_rotate(&heads->a, false);
+		write(1, "ra\n", 3);
 	}
 }
 
@@ -49,16 +73,7 @@ void	sort(struct s_stack_heads *heads)
 		i = 0;
 		while (i < init_size)
 		{
-			if ((heads->a->index >> si & 1) == 0)
-			{
-				stack_push(&heads->a, &heads->b);
-				write(1, "pb\n", 3);
-			}
-			else
-			{
-				stack_rotate(&heads->a, false);
-				write(1, "ra\n", 3);
-			}
+			push_or_rotate(heads, si);
 			i++;
 		}
 		while (heads->b != NULL)
