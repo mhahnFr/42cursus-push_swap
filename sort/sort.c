@@ -5,6 +5,11 @@
 #include "stack/stack.h"
 #include "sort.h"
 
+/*
+ * Searches for the smallest number in the given stack that is bigger than the
+ * given number. The element of the stack containing that number will get the
+ * indicated index. Returns the smallest appopriate number found.
+ */
 static size_t	find_smallest(
 					struct s_stack *stack,
 					long minimum,

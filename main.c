@@ -5,7 +5,26 @@
 #include "sort/sort.h"
 #include "stack/stack.h"
 
-void	delegate(int argc, char **argv, struct s_stack_heads *heads)
+/*
+ * Delegates the given stack to the appopriate sorting algorithm.
+ */
+static void	delegate_sort(struct s_stack_heads *heads)
+{
+	size_t	stack_size;
+
+	stack_size = stack_size(heads->a);
+	if (stack_size <= 3)
+		hard_sort(heads);
+	else if (stack_size <= 5)
+		hard_sort_big(heads);
+	else
+		sort(heads);
+}
+
+/*
+ * Handles the input and invokes the sorting algorithm.
+ */
+static void	delegate(int argc, char **argv, struct s_stack_heads *heads)
 {
 	heads->a = NULL;
 	heads->b = NULL;
@@ -15,7 +34,7 @@ void	delegate(int argc, char **argv, struct s_stack_heads *heads)
 		return ;
 	}
 	if (!is_sorted(heads))
-		sort(heads);
+		delegate_sort(heads);
 }
 
 int	main(int argc, char **argv)

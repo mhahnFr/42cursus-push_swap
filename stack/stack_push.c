@@ -1,5 +1,9 @@
 #include "stack.h"
 
+/*
+ * Performs the actual pushing of the first element in the given stack to the
+ * other one.
+ */
 static void	stack_push_core(
 				struct s_stack **this,
 				struct s_stack **to)

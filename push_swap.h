@@ -9,6 +9,9 @@ struct s_stack_heads {
 	struct s_stack	*b;
 };
 
+/*
+ * Prints the stacks.
+ */
 void	stack_heads_print(struct s_stack_heads *this);
 
 /*
