@@ -46,7 +46,21 @@ void	hard_sort(struct s_stack_heads *heads)
 		write(1, "rra\n", 4);
 	}
 	if (!_is_sorted(heads->a))
-		hard_sort(heads);	
+		hard_sort(heads);
+}
+
+static void	_rotate_or_push(struct s_stack_heads *heads)
+{
+	if (heads->a->index < 3)
+	{
+		stack_push(&heads->a, &heads->b);
+		write(1, "pb\n", 3);
+	}
+	else
+	{
+		stack_rotate(&heads->a, false);
+		write(1, "ra\n", 3);
+	}
 }
 
 void	hard_sort_big(struct s_stack_heads *heads)
@@ -59,16 +73,7 @@ void	hard_sort_big(struct s_stack_heads *heads)
 	i = 0;
 	while (i < size)
 	{
-		if (heads->a->index < 3)
-		{
-			stack_push(&heads->a, &heads->b);
-			write(1, "pb\n", 3);
-		}
-		else
-		{
-			stack_rotate(&heads->a, false);
-			write(1, "ra\n", 3);
-		}
+		_rotate_or_push(heads);
 		i++;
 	}
 	hard_sort(heads);
