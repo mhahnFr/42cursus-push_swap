@@ -49,6 +49,9 @@ void	hard_sort(struct s_stack_heads *heads)
 		hard_sort(heads);
 }
 
+/*
+ * Performs either the appopriate operation, based on the state of the stacks.
+ */
 static void	_rotate_or_push(struct s_stack_heads *heads)
 {
 	if (heads->a->index < 3)
