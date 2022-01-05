@@ -20,7 +20,7 @@ static size_t	find_smallest(
 	size_t	i;
 
 	i = 0;
-	min = INT_MAX;
+	min = (long) INT_MAX + 1;
 	while (i < stack_size)
 	{
 		if (stack->content < min && stack->content > minimum)
