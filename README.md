@@ -28,7 +28,7 @@ zero, the number is pushed to the stack *B*, otherwise, the stack *A* is
 rotated. After going through the whole stack *A*, the numbers in the other
 stack are pushed back to the stack *A*. Then the process is repeated with the
 second last binary digit, after that with the third last binary digit and so
-on, until the stack is sorted. That is checked after each cycle.
+on, until the stack is sorted, which is checked after each cycle.
 
 ## Usage
 Using the application is quite simple: after using the makefile, a list of
