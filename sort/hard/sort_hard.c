@@ -6,29 +6,9 @@
 
 #include "sort_hard.h"
 
-static bool	_is_sorted(struct s_stack *stack)
-{
-	struct s_stack	*tmp;
-	long			i_tmp;
-
-	i_tmp = (long) INT_MIN - 1;
-	tmp = stack;
-	while (tmp != NULL)
-	{
-		if (i_tmp < tmp->content)
-			i_tmp = tmp->content;
-		else
-			return (false);
-		tmp = tmp->next;
-		if (tmp == stack)
-			break ;
-	}
-	return (true);
-}
-
 void	hard_sort(struct s_stack_heads *heads)
 {
-	set_indices(heads->a);
+	_set_indices(heads->a);
 	if (heads->a->index == heads->a->next->index + 1
 		|| heads->a->index + 2 == heads->a->next->index)
 	{
@@ -72,7 +52,7 @@ void	hard_sort_big(struct s_stack_heads *heads)
 	size_t			size;
 
 	size = stack_size(heads->a);
-	set_indices(heads->a);
+	_set_indices(heads->a);
 	i = 0;
 	while (i < size)
 	{

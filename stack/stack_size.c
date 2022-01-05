@@ -4,7 +4,17 @@
 
 inline size_t	stack_size(struct s_stack *this)
 {
-	if (this == NULL)
-		return (0);
-	return (this->previous->index + 1);
+	size_t								i;
+	struct s_stack						*tmp;
+
+	tmp = this;
+	i = 0;
+	while (this != NULL)
+	{
+		i++;
+		this = this->next;
+		if (this == tmp)
+			break ;
+	}
+	return (i);
 }
