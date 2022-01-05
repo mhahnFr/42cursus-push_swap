@@ -40,7 +40,7 @@ void	set_indices(struct s_stack *stack)
 	size_t	size;
 	long	stop;
 
-	stop = INT_MIN;
+	stop = (long) INT_MIN - 1;
 	i = 1;
 	size = stack_size(stack);
 	while (i <= size)
@@ -99,7 +99,7 @@ bool	is_sorted(struct s_stack_heads *heads)
 		return (true);
 	if (heads->b != NULL)
 		return (false);
-	i_tmp = INT_MIN;
+	i_tmp = (long) INT_MIN - 1;
 	tmp = heads->a;
 	while (tmp != NULL)
 	{
