@@ -14,8 +14,14 @@ void	hard_sort(struct s_stack_heads *heads);
  */
 void	hard_sort_big(struct s_stack_heads *heads);
 
+/*
+ * Sets the indices to represent the order of the stack.
+ */
 void	_set_indices(struct s_stack *stack);
 
+/*
+ * Returns wether the stacks are correctly sorted.
+ */
 bool	_is_sorted(struct s_stack *stack);
 
 #endif
