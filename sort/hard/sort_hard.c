@@ -11,7 +11,7 @@ static bool	_is_sorted(struct s_stack *stack)
 	struct s_stack	*tmp;
 	long			i_tmp;
 
-	i_tmp = INT_MIN;
+	i_tmp = (long) INT_MIN - 1;
 	tmp = stack;
 	while (tmp != NULL)
 	{
