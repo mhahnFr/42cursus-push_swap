@@ -14,4 +14,8 @@ void	hard_sort(struct s_stack_heads *heads);
  */
 void	hard_sort_big(struct s_stack_heads *heads);
 
+void	_set_indices(struct s_stack *stack);
+
+bool	_is_sorted(struct s_stack *stack);
+
 #endif

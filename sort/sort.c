@@ -20,12 +20,12 @@ static size_t	find_smallest(
 	size_t	i;
 
 	i = 0;
-	min = INT_MAX;
+	min = (long) INT_MAX + 1;
 	while (i < stack_size)
 	{
 		if (stack->content < min && stack->content > minimum)
 		{
-			stack->index = new_index;
+			stack->index = stack_size - new_index;
 			min = stack->content;
 		}
 		stack = stack->next;
@@ -40,7 +40,7 @@ void	set_indices(struct s_stack *stack)
 	size_t	size;
 	long	stop;
 
-	stop = INT_MIN;
+	stop = (long) INT_MIN - 1;
 	i = 1;
 	size = stack_size(stack);
 	while (i <= size)
@@ -52,7 +52,7 @@ void	set_indices(struct s_stack *stack)
 
 static void	push_or_rotate(struct s_stack_heads *heads, size_t bit_count)
 {
-	if ((heads->a->index >> bit_count & 1) == 0)
+	if (heads->a->index & (1 << bit_count))
 	{
 		stack_push(&heads->a, &heads->b);
 		write(1, "pb\n", 3);
@@ -99,7 +99,7 @@ bool	is_sorted(struct s_stack_heads *heads)
 		return (true);
 	if (heads->b != NULL)
 		return (false);
-	i_tmp = INT_MIN;
+	i_tmp = (long) INT_MIN - 1;
 	tmp = heads->a;
 	while (tmp != NULL)
 	{
