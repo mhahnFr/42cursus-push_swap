@@ -40,6 +40,13 @@ sort these numbers.
 This repository showcases my proper solution to the exercise and it will not be
 developed any further.
 
+> As all other C projects at the [42 school], the code has to written in accordance
+> with the [norm]:
+> - Only 25 lines per function,
+> - only 5 functions per file,
+> - usage of only the allowed external functions.
+
 © 2021 [mhahnFr](https://www.github.com/mhahnFr)
 
 [42 school]: https://www.42heilbronn.de/learncoderepeat
+[norm]: https://www.github.com/42School/norminette
